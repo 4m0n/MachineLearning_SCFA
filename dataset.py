@@ -4,7 +4,7 @@ from loguru import logger
 from tqdm import tqdm
 import typer
 
-from machinelearning_sc.config import PROCESSED_DATA_DIR, RAW_DATA_DIR
+from config import PROCESSED_DATA_DIR, RAW_DATA_DIR
 
 app = typer.Typer()
 
@@ -27,3 +27,7 @@ def main(
 
 if __name__ == "__main__":
     app()
+
+@app.command()
+def screen_record_test():
+    ...

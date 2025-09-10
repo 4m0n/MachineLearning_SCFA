@@ -18,4 +18,7 @@ dependencies:
   - pytest
   - pip:
     - python-dotenv
-    - -e .
+    - pynput
+    - pyautogui
+    - playsound
+    - simpleaudio
