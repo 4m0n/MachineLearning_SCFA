@@ -11,6 +11,15 @@ PYTHON_INTERPRETER = python
 #################################################################################
 
 
+.PHONY: screen_record
+screen_record:
+	$(PYTHON_INTERPRETER) scripts/screen_record.py screen-record-test --intervall 5
+
+
+
+
+
+
 ## Install Python dependencies
 .PHONY: requirements
 requirements:

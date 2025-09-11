@@ -41,11 +41,13 @@ def make_screenshot():
     return screenshot
 
 #speichert den screen (sollte auf jedem pc klappen)
-def save_screenshot(screenshot, output_dir, praefix,first):
+def save_screenshot(screenshot,intervall, output_dir, praefix,start_time,first):
     try:
         base_dir = Path(__file__).resolve().parent.parent
         output_dir = base_dir / output_dir
-
+        print(output_dir)
+        output_dir = output_dir.parent / f"{output_dir.name}_{intervall}s_{start_time}"
+        print(output_dir)
         if not output_dir.exists():
             os.makedirs(output_dir)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -70,10 +72,11 @@ def record(intervall,output_dir,praefix):
     first = True
     logger.info("Press p to start!")
     audio = AudioPlayer()
+    start_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     while True:
         if record:
             screenshot = make_screenshot()
-            save_screenshot(screenshot, output_dir, praefix,first)
+            save_screenshot(screenshot,intervall, output_dir, praefix,start_time,first)
             first = False
             time.sleep(intervall)
         if key_pressed == "p":
@@ -96,14 +99,29 @@ def record(intervall,output_dir,praefix):
 
 @app.command()
 def screen_record_test(
-    intervall: int = typer.Option(1, help="Intervall zwischen Screenshots in Sekunden"),
-    output_dir: Path = typer.Option(Path(f"data/raw/screenshots/Session_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"), help="Ausgabeverzeichnis"),
+    intervall: int = typer.Option(5, help="Intervall zwischen Screenshots in Sekunden"),
+    output_dir: Path = typer.Option(Path(f"data/raw/screenshots/Session"), help="Ausgabeverzeichnis"),
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")
 ):
     listener = Listener(on_press=on_press)
     listener.start()
     record(intervall, output_dir, praefix)
     
+    
+def file_counter(output_dir):
+    base_dir = Path(__file__).resolve().parent.parent
+    output_dir = base_dir / output_dir
+    sub_folders = 0
+    files = 0
+    for subs in output_dir.iterdir():
+        sub_folders += 1
+        for file in subs.iterdir():
+            files += 1
+    print(f"Folders: {sub_folders}, Files: {files}")
+    
+@app.command()
+def info(output_dir: Path = typer.Option(Path(f"data/raw/screenshots"), help="Ausgabeverzeichnis")):
+    file_counter()
 
     
 if __name__ == "__main__":

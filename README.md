@@ -1,6 +1,45 @@
 # MachineLearning_SC
 
-A short description of the project.
+<h3>Commands</h3>
+<details>
+
+**`make screen_record`** starts screen recording mode, press `p` to start saving screenshots and `p` again to end. Press `o` to check if the program is still running.
+
+- `info` get a quick overview of the amount of directories and files created
+- `help` gets you all the parameters
+
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Project Organization
 
