@@ -1,6 +1,7 @@
 import pyautogui
 import time
 import os
+import sys
 from datetime import datetime
 from pathlib import Path
 from loguru import logger
@@ -12,7 +13,8 @@ from pynput.keyboard import Listener
 from playsound import playsound
 import simpleaudio as sa
 import winsound
-#import cv2
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+import config
 
 app = typer.Typer()
 
@@ -100,9 +102,13 @@ def record(intervall,output_dir,praefix):
 @app.command()
 def screen_record_test(
     intervall: int = typer.Option(5, help="Intervall zwischen Screenshots in Sekunden"),
-    output_dir: Path = typer.Option(Path(f"data/raw/screenshots/Session"), help="Ausgabeverzeichnis"),
+    output_dir: Path = typer.Option(Path(f"{config.RAW_DATA_DIR}/screenshots/Session"), help="Ausgabeverzeichnis"),
+    info: bool = typer.Option(False, help="Get informations about the directory and file count"),
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")
 ):
+    if info: 
+        file_counter(Path(f"{config.RAW_DATA_DIR}/screenshots"))
+        return
     listener = Listener(on_press=on_press)
     listener.start()
     record(intervall, output_dir, praefix)
@@ -110,7 +116,9 @@ def screen_record_test(
     
 def file_counter(output_dir):
     base_dir = Path(__file__).resolve().parent.parent
+    print(f"output_dir: {output_dir}\nbase_dir: {base_dir}")
     output_dir = base_dir / output_dir
+    
     sub_folders = 0
     files = 0
     for subs in output_dir.iterdir():
@@ -119,11 +127,7 @@ def file_counter(output_dir):
             files += 1
     print(f"Folders: {sub_folders}, Files: {files}")
     
-@app.command()
-def info(output_dir: Path = typer.Option(Path(f"data/raw/screenshots"), help="Ausgabeverzeichnis")):
-    file_counter()
 
-    
 if __name__ == "__main__":
     app()
     

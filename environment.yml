@@ -16,6 +16,7 @@ dependencies:
   - scikit-learn
   - ruff
   - pytest
+  - opencv
   - pip:
     - python-dotenv
     - pynput
