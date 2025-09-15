@@ -16,6 +16,9 @@ screen_record:
 	$(PYTHON_INTERPRETER) scripts/screen_record.py screen-record-test --intervall 5
 
 
+.PHONY: prepare_data
+prepare_data:
+	$(PYTHON_INTERPRETER) scripts/prepare_data.py 
 
 
 
