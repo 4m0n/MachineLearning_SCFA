@@ -106,6 +106,7 @@ def screen_record_test(
     info: bool = typer.Option(False, help="Get informations about the directory and file count"),
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")
 ):
+    print(f"\nPress `p` to start/pause recording\nPress `o` to make a sound while recording\n")
     if info: 
         file_counter(Path(f"{config.RAW_DATA_DIR}/screenshots"))
         return

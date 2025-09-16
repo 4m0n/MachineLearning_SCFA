@@ -8,6 +8,8 @@ import numpy as np
 import typer
 from typing import Optional
 import shutil
+from tqdm import tqdm
+import pandas as pd
 
 app = typer.Typer()
 class Colors:
@@ -99,42 +101,70 @@ def save_color_pictures(players, files, ouput_dir, direct):
         shutil.rmtree(general_dir)
     os.makedirs(general_dir)
     
+    # ==== Stats file ====
+    
     colors = Colors()
+    color_names = []
+    for func_name in dir(colors):
+        if func_name.startswith("__"):
+            continue
+        color_names.append(func_name)
+    stats = pd.DataFrame(columns=["Frame"] + color_names)
+    # ====================
+    
+    
     first = files[0]
     
-    for file in files:
+        
+    for file in tqdm(files,desc = "Processing Screenshots"):
         img = subtract_pics(first,file)
+        extract_colors = []
+        base_name = os.path.basename(file)
+        new_row = {"Frame": base_name[:-4]}
         for func_name in dir(colors):
             if func_name.startswith("__"):
                 continue
-            
             func = getattr(colors, func_name)
             pic,count = count_color_pixel(img,target_color=func(), tolerance=40,count=False)
-            
+            new_row[func_name] = count
             if count > 1000:
                 
                 color_dir = general_dir / func_name    
                 os.makedirs(color_dir, exist_ok=True)
-                base_name = os.path.basename(file)
                 cv2.imwrite(os.path.join(color_dir, base_name), pic) 
+                
+                
+        
+        
             
+        stats = pd.concat([stats, pd.DataFrame([new_row])], ignore_index=True)
+    stats.to_csv(general_dir / "stats.csv", index=False)
 
 
 # gets subtracted picutre and counts pixels of a certain color
 def count_color_pixel(img,target_color, tolerance=50, count = False):
-    
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  
+    # RGB Farbraum -> problem mit weiss und gelb -> schwarz wird erkannt   
+
+
+    img_org = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  
     target_r, target_g, target_b = target_color
+    img = img_org.astype(np.int16)
+    target_r = np.int16(target_r)
+    target_g = np.int16(target_g) 
+    target_b = np.int16(target_b)
     
+
     color_mask = (
         (np.abs(img[:, :, 0] - target_r) < tolerance) &  # Rot
         (np.abs(img[:, :, 1] - target_g) < tolerance) &  # Grün
         (np.abs(img[:, :, 2] - target_b) < tolerance)    # Blau
     )
+        
+
     pixel_count = np.count_nonzero(color_mask)
     if not count:
-        result = np.zeros_like(img)
-        result[color_mask] = img[color_mask]
+        result = np.zeros_like(img_org)
+        result[color_mask] = img_org[color_mask]
         result_bgr = cv2.cvtColor(result, cv2.COLOR_RGB2BGR)
         return result_bgr,pixel_count
 
@@ -173,8 +203,6 @@ def find_players(files):
         if count > 1000:
             player_count += 1
             players.append(func_name)
-        print(f"Count: {count} - {func_name}")
-    print("Player Count: ", player_count)
     return players
 
 # returns list of files that are not yet proccesed ( execpt recalculate is True )
@@ -199,24 +227,20 @@ def prepare_data(
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")
 ):
     inputs = list_outputs(input_dir,ouput_dir,recalculate)
+    counter = 1
     for dir in inputs:
+        print(f"Start with: {counter}/{len(inputs)}")
+        counter += 1
         load_dir = input_dir / dir
         files = os.listdir(load_dir)
         if len(files) > 5:
             full_paths = [str(load_dir / file) for file in files]
-            if "Session_5s_2025-09-11_02-44-10" in str(load_dir): # just to test
-                players = find_players(full_paths)
-                save_color_pictures(players,full_paths,ouput_dir, dir)
+            #if "Session_5s_2025-09-11_02-44-10" in str(load_dir): # just to test
+            players = find_players(full_paths)
+            save_color_pictures(players,full_paths,ouput_dir, dir)
                 
-
-
 
 
 if __name__ == "__main__":
     app()
     
-
-
-
-
-
