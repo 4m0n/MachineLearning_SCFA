@@ -47,9 +47,8 @@ def save_screenshot(screenshot,intervall, output_dir, praefix,start_time,first):
     try:
         base_dir = Path(__file__).resolve().parent.parent
         output_dir = base_dir / output_dir
-        print(output_dir)
         output_dir = output_dir.parent / f"{output_dir.name}_{intervall}s_{start_time}"
-        print(output_dir)
+        print(f"Screenshot: {output_dir}")
         if not output_dir.exists():
             os.makedirs(output_dir)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -84,16 +83,19 @@ def record(intervall,output_dir,praefix):
         if key_pressed == "p":
             key_pressed = None
             if record == False:
+                record = True
                 audio.start_sound()
-            if record:
-                logger.info("Stop Recording")
+                if first == False:
+                    logger.info("Resume Recording")
+            elif record:
+                record = False
                 audio.end_sound()
-                break
-            record = True
+                logger.info("Pause Recording")
         elif key_pressed == "o":
             key_pressed = None
-            logger.info("StillRecording")
+            logger.info("End Recording")
             audio.recording_sound()
+            break
             
 
     logger.info("Screen recording finished")
@@ -101,7 +103,7 @@ def record(intervall,output_dir,praefix):
 
 @app.command()
 def screen_record_test(
-    intervall: int = typer.Option(5, help="Intervall zwischen Screenshots in Sekunden"),
+    intervall: int = typer.Option(1, help="Intervall zwischen Screenshots in Sekunden"),
     output_dir: Path = typer.Option(Path(f"{config.RAW_DATA_DIR}/screenshots/Session"), help="Ausgabeverzeichnis"),
     info: bool = typer.Option(False, help="Get informations about the directory and file count"),
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")

@@ -1,6 +1,11 @@
 import os
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-import easyocr
+from paddleocr import PaddleOCR
+
+ocr = PaddleOCR(
+    lang="en",
+    use_doc_orientation_classify=False,
+    use_doc_unwarping=False,
+    use_textline_orientation=False)
 import cv2
 import sys
 from pathlib import Path
@@ -14,7 +19,6 @@ from tqdm import tqdm
 import pandas as pd
 import matplotlib.image as mpimg
 
-reader = easyocr.Reader(['en'], gpu=True)
 app = typer.Typer()
 
 # colors from pre selection
@@ -214,29 +218,53 @@ def get_color(image):
 
     return color_name
 
+# extract time from image
+def get_time(result):
+
+    result = (result * 255).astype(np.uint8)
+    scale_factor = 4
+    result = cv2.resize(result, None, fx=scale_factor, fy=scale_factor, interpolation=cv2.INTER_LINEAR)
+
+    text = ocr.predict(result)  
+    text = text[0]["rec_texts"]
+    if text == []:
+        text = np.nan
+    else:
+        text = text[0]
+    return text
+# extract power number from image 
 def get_number(image):
-    #white = np.array([255, 255, 255])
     white = np.array([1, 1, 1])
     diff = np.abs(image - white)  # Differenz zu Weiß berechnen
-    mask = np.all(diff < 0.1, axis=-1)  # Prüfen, ob alle Kanäle innerhalb des Thresholds liegen
+    mask = np.all(diff < 0.6, axis=-1)  # Prüfen, ob alle Kanäle innerhalb des Thresholds liegen
 
-    # Neues Bild erstellen: Weiße Pixel bleiben, andere werden schwarz
     result = np.zeros_like(image)  # Alles schwarz
     result[mask] = white 
     result = (result * 255).astype(np.uint8)
     height, width = result.shape[:2]
-    new_width = int(width * 4)
-    new_height = int(height * 4)
-    result = cv2.resize(result, (new_width, new_height), interpolation=cv2.INTER_CUBIC) # sehr wichtig sonst gehts nicht
 
-    result = cv2.GaussianBlur(result, (3,3), 0)
-    text = reader.readtext(result, allowlist='0123456789km,.')  
+    scale_factor = 4
+    result = cv2.resize(result, None, fx=scale_factor, fy=scale_factor, interpolation=cv2.INTER_LINEAR)
+    
+
+    result = cv2.cvtColor(result, cv2.COLOR_RGB2GRAY)
+    _, result = cv2.threshold(result, 10, 255, cv2.THRESH_BINARY)
+    result = cv2.bitwise_not(result)
+    #result = cv2.GaussianBlur(result, (3,3), 0)
+    #result = cv2.blur(result,(5,5))
+    result = cv2.cvtColor(result, cv2.COLOR_GRAY2BGR)
+    
+    text = ocr.predict(result)  
+    text = text[0]["rec_texts"]
     if text == []:
         text = np.nan
     else:
-        text = text[0][1]
+        text = text[0]
     return text
-
+    
+    
+    
+# load all informtions from image and save them in a dict
 def preprocess_image_power(pfad, new_row):
 
     img = mpimg.imread(pfad)
@@ -264,11 +292,10 @@ def preprocess_image_power(pfad, new_row):
         crop_bottom2 = int(height * (1 - (0.9163-(next*i))))  #  unten
         crop_left2 = int(width * 0.85)  #  links
         crop_right2 = int(width * (1 - 0.126))  #  rechts
-        
         # Bild zuschneiden
         players = img[crop_top:crop_bottom, crop_left:crop_right]
         power = img[crop_top2:crop_bottom2, crop_left2:crop_right2]
-
+        
         def conv_img(cropped_img,alpha = 0.3):
             scaled_img = (cropped_img * 255).astype(np.uint8)
             new_image = cv2.convertScaleAbs(scaled_img, alpha=alpha, beta=1)
@@ -282,6 +309,14 @@ def preprocess_image_power(pfad, new_row):
         text = get_number(power)
         new_row[color_name] = text
 
+    # Time
+    crop_top3 = int(height * (0.035))  #  oben
+    crop_bottom3 = int(height * (1 - (0.95)))  #  unten
+    crop_left3 = int(width * 0.776)  #  links
+    crop_right3 = int(width * (1 - 0.194))  #  rechts
+    time = img[crop_top3:crop_bottom3, crop_left3:crop_right3]
+    time = get_time(time)
+    new_row["time"] = time
     return new_row
         
 def full_numbers(data):
@@ -301,6 +336,13 @@ def full_numbers(data):
                         data.at[i, col] = float(num)
                     except ValueError:
                         data.at[i, col] = np.nan
+                elif ":" in data.at[i, col]:
+                    try:
+                        h, m, s = map(int, data.at[i, col].split(":"))
+                        data.at[i, col] = int(h * 3600 + m * 60 + s)
+                    except ValueError:
+                        return np.nan
+                        
             elif pd.isna(data.at[i, col]):
                 data.at[i, col] = np.nan
         i += 1
@@ -327,7 +369,7 @@ def save_color_pictures(players, files, ouput_dir, direct):
             continue
         color_names.append(func_name)
     stats = pd.DataFrame(columns=["Frame"] + color_names)
-    info_power = pd.DataFrame(columns=["Frame"] + color_names)
+    info_power = pd.DataFrame(columns=["Frame","time"] + color_names)
     # ====================
     
     
@@ -338,12 +380,11 @@ def save_color_pictures(players, files, ouput_dir, direct):
             continue
         extract_colors.append(func_name)
         
-    for file in tqdm(files,desc = "Calculating Scores"):    
+    for file in tqdm(files,desc = "Calculating Scores",leave=False):    
         base_name = os.path.basename(file)
         new_power_row = {"Frame": base_name[:-4]}
         new_power_row = preprocess_image_power(file,new_power_row)
         info_power = pd.concat([info_power, pd.DataFrame([new_power_row])], ignore_index=True) 
-        
     info_power.to_csv(general_dir / "power.csv", index=False)    
     info_power = full_numbers(info_power)
     info_power.to_csv(general_dir / "power.csv", index=False)
@@ -357,7 +398,7 @@ def save_color_pictures(players, files, ouput_dir, direct):
         i+=1 
            
                
-    for file in tqdm(files,desc = "Processing Screenshots"):
+    for file in tqdm(files,desc = "Processing Screenshots",leave=False):
         img = subtract_pics(first,file)
         base_name = os.path.basename(file)
         new_row = {"Frame": base_name[:-4]}
@@ -462,14 +503,11 @@ def list_outputs(input_dir,ouput_dir,recalculate):
 def prepare_data(
     input_dir: Path = typer.Option(Path(f"{config.RAW_DATA_DIR}/screenshots/"), help="Input directory"),
     ouput_dir: Path = typer.Option(Path(f"{config.PROCESSED_DATA_DIR}"), help="Ouput directory"),
-    recalculate: bool = typer.Option(True, help="Recalculate all files"),
+    recalculate: bool = typer.Option(False, help="Recalculate all files"),
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")
 ):
     inputs = list_outputs(input_dir,ouput_dir,recalculate)
-    counter = 1
-    for dir in inputs:
-        print(f"Start with: {counter}/{len(inputs)}")
-        counter += 1
+    for dir in tqdm(inputs,desc="Processing Sessions"):
         load_dir = input_dir / dir
         files = os.listdir(load_dir)
         if len(files) > 5:
