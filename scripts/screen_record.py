@@ -91,6 +91,14 @@ def record(intervall,output_dir,praefix):
                 record = False
                 audio.end_sound()
                 logger.info("Pause Recording")
+                input_value = input("Enter new Intervall in Seconds (empty for default): ")
+                if input_value == "":
+                    logger.info(f"press p to continue")
+                elif input_value.isdigit() and int(input_value) >= 1:
+                    intervall = int(input_value)
+                    logger.info(f"New Intervall set to {intervall} seconds\npress p to continue")
+                else:
+                    logger.info(f"Invalid input. Intervall still {intervall}.\npress p to continue")
         elif key_pressed == "o":
             key_pressed = None
             logger.info("End Recording")

@@ -6,6 +6,7 @@ ocr = PaddleOCR(
     use_doc_orientation_classify=False,
     use_doc_unwarping=False,
     use_textline_orientation=False)
+
 import cv2
 import sys
 from pathlib import Path
@@ -227,6 +228,11 @@ def get_time(result):
 
     text = ocr.predict(result)  
     text = text[0]["rec_texts"]
+    i = 0
+    while i < len(text):
+        if any(char not in ['0','1','2','3','4','5','6','7','8','9',':'] for char in text[i]):
+            return np.nan
+        i += 1
     if text == []:
         text = np.nan
     else:
@@ -256,6 +262,11 @@ def get_number(image):
     
     text = ocr.predict(result)  
     text = text[0]["rec_texts"]
+    i = 0
+    while i < len(text):
+        if any(char not in ['0','1','2','3','4','5','6','7','8','9','k','m','.'] for char in text[i]):
+            return np.nan
+        i += 1
     if text == []:
         text = np.nan
     else:
@@ -540,7 +551,7 @@ def list_outputs(input_dir,ouput_dir,recalculate):
 def prepare_data(
     input_dir: Path = typer.Option(Path(f"{config.RAW_DATA_DIR}/screenshots/"), help="Input directory"),
     ouput_dir: Path = typer.Option(Path(f"{config.PROCESSED_DATA_DIR}"), help="Ouput directory"),
-    recalculate: bool = typer.Option(True, help="Recalculate all files"),
+    recalculate: bool = typer.Option(False, help="Recalculate all files"),
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")
 ):
     inputs = list_outputs(input_dir,ouput_dir,recalculate)

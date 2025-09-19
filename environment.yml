@@ -25,5 +25,5 @@ dependencies:
     - playsound
     - simpleaudio
     - torch
-    - paddlepaddle-gpu==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu129/
-    - paddleocr
+    #- paddlepaddle-gpu==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu129/
+    #- paddleocr
