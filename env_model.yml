@@ -1,8 +1,8 @@
-name: MachineLearning_SC
+name: tf
 channels:
   - conda-forge
 dependencies:
-  - python=3.11
+  - python=3.9
   - pip
   - typer
   - loguru
@@ -10,6 +10,7 @@ dependencies:
   - ipython
   - jupyterlab
   - matplotlib
+  - tensorflow=2.10
   - seaborn
   - notebook
   - numpy
@@ -25,5 +26,3 @@ dependencies:
     - playsound
     - simpleaudio
     - torch
-    - paddlepaddle-gpu==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cu129/
-    - paddleocr

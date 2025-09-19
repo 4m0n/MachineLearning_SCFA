@@ -188,6 +188,7 @@ class Colors2:
 
 # ========= Get Power and Players =========
 
+
 def get_color(image):
     colors2 = Colors2()
     black_mask = np.all(image == [0, 0, 0], axis=-1)
@@ -217,7 +218,6 @@ def get_color(image):
 
 
     return color_name
-
 # extract time from image
 def get_time(result):
 
@@ -261,9 +261,6 @@ def get_number(image):
     else:
         text = text[0]
     return text
-    
-    
-    
 # load all informtions from image and save them in a dict
 def preprocess_image_power(pfad, new_row):
 
@@ -356,6 +353,7 @@ def full_numbers(data):
 def save_color_pictures(players, files, ouput_dir, direct):
     # create folder -> delete if it exists to make easy reacalc
     general_dir = ouput_dir / direct
+
     if os.path.exists(general_dir):
         shutil.rmtree(general_dir)
     os.makedirs(general_dir)
@@ -418,8 +416,10 @@ def save_color_pictures(players, files, ouput_dir, direct):
         
             
         stats = pd.concat([stats, pd.DataFrame([new_row])], ignore_index=True)
-    
     stats.to_csv(general_dir / "stats.csv", index=False)
+    picture_without_background(ouput_dir, direct)
+    
+    
 
 # gets subtracted picutre and counts pixels of a certain color
 def count_color_pixel(img,target_color, tolerance=50, count = False):
@@ -464,6 +464,43 @@ def subtract_pics(start_pfad, test_pfad):
     result = cv2.bitwise_and(img2, img2, mask=mask)
     return result    
 
+# save picture without background -> combine all loaded pictures
+def picture_without_background(ouput_dir, direct):
+    general_dir = ouput_dir / direct
+    subBackground = general_dir / "subBackground"
+    if os.path.exists(subBackground):
+        shutil.rmtree(subBackground)
+    os.makedirs(subBackground)
+    
+    all_image_paths = []
+    for folder in general_dir.iterdir():
+        if folder.is_dir():
+            all_image_paths.append([])
+            for file in folder.iterdir():
+                if file.is_file(): 
+                    all_image_paths[-1].append(str(file))
+    
+    
+
+    org_folder = Path(f"{config.RAW_DATA_DIR}/screenshots/{direct}")
+    org_files = [file for file in org_folder.iterdir() if file.is_file()]
+    
+    
+    for org_file in tqdm(org_files,desc="Picture without Background",leave=False):
+        temp_img = cv2.imread(org_file, cv2.IMREAD_COLOR)
+        combined_img = np.zeros_like(temp_img)
+        for folder in all_image_paths:
+            i = 0
+            while i < len(folder):
+                if folder[i].endswith(org_file.name):
+                    add_image = cv2.imread(folder[i], cv2.IMREAD_COLOR)
+                    combined_img = cv2.add(combined_img, add_image)
+                    break
+                i+=1
+        cv2.imwrite(subBackground / org_file.name, combined_img)
+        
+        
+    ...
 # checks how often pixel of a certain colors show up -> threshold to detect players
 def find_players(files):
     files.sort()
@@ -503,7 +540,7 @@ def list_outputs(input_dir,ouput_dir,recalculate):
 def prepare_data(
     input_dir: Path = typer.Option(Path(f"{config.RAW_DATA_DIR}/screenshots/"), help="Input directory"),
     ouput_dir: Path = typer.Option(Path(f"{config.PROCESSED_DATA_DIR}"), help="Ouput directory"),
-    recalculate: bool = typer.Option(False, help="Recalculate all files"),
+    recalculate: bool = typer.Option(True, help="Recalculate all files"),
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")
 ):
     inputs = list_outputs(input_dir,ouput_dir,recalculate)
@@ -513,8 +550,8 @@ def prepare_data(
         if len(files) > 5:
             full_paths = [str(load_dir / file) for file in files]
             #if "Session_5s_2025-09-11_02-44-10" in str(load_dir): # just to test
-            players = find_players(full_paths)
-            save_color_pictures(players,full_paths,ouput_dir, dir)
+            #players = find_players(full_paths)
+            save_color_pictures("players",full_paths,ouput_dir, dir)
                 
 
 
