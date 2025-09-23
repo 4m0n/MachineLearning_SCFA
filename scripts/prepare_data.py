@@ -19,6 +19,7 @@ import shutil
 from tqdm import tqdm
 import pandas as pd
 import matplotlib.image as mpimg
+import ast
 
 app = typer.Typer()
 
@@ -394,9 +395,9 @@ def save_color_pictures(players, files, ouput_dir, direct):
         new_power_row = {"Frame": base_name[:-4]}
         new_power_row = preprocess_image_power(file,new_power_row)
         info_power = pd.concat([info_power, pd.DataFrame([new_power_row])], ignore_index=True) 
-    info_power.to_csv(general_dir / "power.csv", index=False)    
+        
+        
     info_power = full_numbers(info_power)
-    info_power.to_csv(general_dir / "power.csv", index=False)
     filtered_df = info_power.dropna(axis=1, how='all')
     valid_list = filtered_df.columns.tolist() 
     i = 0
@@ -427,7 +428,37 @@ def save_color_pictures(players, files, ouput_dir, direct):
         
             
         stats = pd.concat([stats, pd.DataFrame([new_row])], ignore_index=True)
-    stats.to_csv(general_dir / "stats.csv", index=False)
+    
+    # ======= Save all Information in one file =======
+    """
+    Structure of file 
+    Frame , time, colors
+    frame1,   10, [power, area, more...]
+    """
+    screens = info_power["Frame"].tolist()
+     
+    data = pd.DataFrame(columns=["Frame","time"] + color_names) # power, area, more 
+    for pic in screens:
+        info_power_row = info_power[info_power["Frame"] == pic]
+        stats_row = stats[stats["Frame"] == pic]
+        new_row = {"Frame": pic}
+        for col in info_power_row:
+            if col.lower() in ["frame", "time"]:
+                continue
+            try:
+                power = int(info_power_row[col].values[0])
+            except:
+                power = np.nan
+            try:
+                area = int(stats_row[col].values[0])
+            except:
+                area = np.nan
+            new_row[col] = [power, area] # here you can add more entries
+            
+        new_row["time"] = info_power_row["time"].values[0]
+        data = pd.concat([data, pd.DataFrame([new_row])], ignore_index=True)
+     
+    data.to_csv(general_dir / "stats.csv", index=False)    
     picture_without_background(ouput_dir, direct)
     
     
@@ -551,7 +582,7 @@ def list_outputs(input_dir,ouput_dir,recalculate):
 def prepare_data(
     input_dir: Path = typer.Option(Path(f"{config.RAW_DATA_DIR}/screenshots/"), help="Input directory"),
     ouput_dir: Path = typer.Option(Path(f"{config.PROCESSED_DATA_DIR}"), help="Ouput directory"),
-    recalculate: bool = typer.Option(False, help="Recalculate all files"),
+    recalculate: bool = typer.Option(True, help="Recalculate all files"),
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")
 ):
     inputs = list_outputs(input_dir,ouput_dir,recalculate)
@@ -568,4 +599,7 @@ def prepare_data(
 
 if __name__ == "__main__":
     app()
+    
+    
+    
     

@@ -1,42 +1,42 @@
-Frame,blue,darkblue,darkgold,darkgreen,darkorange,darkred,darkteal,gray,green,lime,magenta,orange,pink,purple,red,teal,turkis,violet,white,yellow
-screenshot_20250917_205142,,0,,,,,,,,,,0,,,,,,,,
-screenshot_20250917_205147,,133,,,,,,,,,,312,,,,,,,,
-screenshot_20250917_205153,,776,,,,,,,,,,753,,,,,,,,
-screenshot_20250917_205158,,1210,,,,,,,,,,1113,,,,,,,,
-screenshot_20250917_205204,,1700,,,,,,,,,,1041,,,,,,,,
-screenshot_20250917_205209,,2009,,,,,,,,,,1501,,,,,,,,
-screenshot_20250917_205215,,2018,,,,,,,,,,1673,,,,,,,,
-screenshot_20250917_205220,,2321,,,,,,,,,,1754,,,,,,,,
-screenshot_20250917_205226,,2937,,,,,,,,,,1792,,,,,,,,
-screenshot_20250917_205231,,3055,,,,,,,,,,2238,,,,,,,,
-screenshot_20250917_205237,,3367,,,,,,,,,,2064,,,,,,,,
-screenshot_20250917_205242,,3596,,,,,,,,,,2886,,,,,,,,
-screenshot_20250917_205248,,4198,,,,,,,,,,3899,,,,,,,,
-screenshot_20250917_205253,,4571,,,,,,,,,,4692,,,,,,,,
-screenshot_20250917_205259,,4218,,,,,,,,,,3890,,,,,,,,
-screenshot_20250917_205304,,4554,,,,,,,,,,4044,,,,,,,,
-screenshot_20250917_205310,,4446,,,,,,,,,,3334,,,,,,,,
-screenshot_20250917_205315,,4759,,,,,,,,,,3157,,,,,,,,
-screenshot_20250917_205321,,4405,,,,,,,,,,3387,,,,,,,,
-screenshot_20250917_205326,,2872,,,,,,,,,,3462,,,,,,,,
-screenshot_20250917_205332,,2954,,,,,,,,,,3639,,,,,,,,
-screenshot_20250917_205337,,3557,,,,,,,,,,3775,,,,,,,,
-screenshot_20250917_205343,,3958,,,,,,,,,,3899,,,,,,,,
-screenshot_20250917_205348,,4154,,,,,,,,,,3674,,,,,,,,
-screenshot_20250917_205354,,4083,,,,,,,,,,3344,,,,,,,,
-screenshot_20250917_205359,,4084,,,,,,,,,,3423,,,,,,,,
-screenshot_20250917_205405,,4475,,,,,,,,,,3674,,,,,,,,
-screenshot_20250917_205410,,4552,,,,,,,,,,3731,,,,,,,,
-screenshot_20250917_205416,,4767,,,,,,,,,,3927,,,,,,,,
-screenshot_20250917_205421,,4910,,,,,,,,,,3956,,,,,,,,
-screenshot_20250917_205427,,5399,,,,,,,,,,3859,,,,,,,,
-screenshot_20250917_205432,,5437,,,,,,,,,,4020,,,,,,,,
-screenshot_20250917_205438,,5929,,,,,,,,,,3955,,,,,,,,
-screenshot_20250917_205443,,6709,,,,,,,,,,3912,,,,,,,,
-screenshot_20250917_205449,,7316,,,,,,,,,,3664,,,,,,,,
-screenshot_20250917_205454,,7937,,,,,,,,,,3761,,,,,,,,
-screenshot_20250917_205500,,8460,,,,,,,,,,4184,,,,,,,,
-screenshot_20250917_205505,,9353,,,,,,,,,,4300,,,,,,,,
-screenshot_20250917_205511,,9417,,,,,,,,,,3757,,,,,,,,
-screenshot_20250917_205516,,8973,,,,,,,,,,3263,,,,,,,,
-screenshot_20250917_205522,,4984,,,,,,,,,,1545,,,,,,,,
+Frame,time,blue,darkblue,darkgold,darkgreen,darkorange,darkred,darkteal,gray,green,lime,magenta,orange,pink,purple,red,teal,turkis,violet,white,yellow
+screenshot_20250917_205142,4,"[nan, nan]","[0, 0]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[0, 0]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205147,38,"[nan, nan]","[167, 133]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[152, 312]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205153,73,"[nan, nan]","[400, 776]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[386, 753]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205158,108,"[nan, nan]","[633, 1210]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[620, 1113]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205204,143,"[nan, nan]","[1100, 1700]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[803, 1041]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205209,,"[nan, nan]","[1400, 2009]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[1300, 1501]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205215,212,"[nan, nan]","[1700, 2018]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[1700, 1673]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205220,246,"[nan, nan]","[2100, 2321]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[2100, 1754]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205226,281,"[nan, nan]","[2600, 2937]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[2600, 1792]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205231,316,"[nan, nan]","[3100, 3055]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[2800, 2238]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205237,351,"[nan, nan]","[3700, 3367]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[3100, 2064]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205242,385,"[nan, nan]","[4600, 3596]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[3600, 2886]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205248,420,"[nan, nan]","[5300, 4198]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[4400, 3899]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205253,454,"[nan, nan]","[6300, 4571]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[5100, 4692]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205259,489,"[nan, nan]","[7000, 4218]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[5500, 3890]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205304,524,"[nan, nan]","[7800, 4554]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[5800, 4044]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205310,559,"[nan, nan]","[9200, 4446]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[5900, 3334]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205315,594,"[nan, nan]","[9500, 4759]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[6300, 3157]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205321,628,"[nan, nan]","[10000, 4405]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[6800, 3387]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205326,663,"[nan, nan]","[10000, 2872]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[7900, 3462]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205332,698,"[nan, nan]","[11000, 2954]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[8600, 3639]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205337,732,"[nan, nan]","[12000, 3557]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[9100, 3775]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205343,766,"[nan, nan]","[13000, 3958]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[9800, 3899]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205348,802,"[nan, nan]","[14000, 4154]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[10000, 3674]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205354,836,"[nan, nan]","[15000, 4083]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[11000, 3344]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205359,871,"[nan, nan]","[16000, 4084]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[12000, 3423]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205405,905,"[nan, nan]","[16000, 4475]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[12000, 3674]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205410,940,"[nan, nan]","[18000, 4552]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[13000, 3731]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205416,975,"[nan, nan]","[19000, 4767]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[14000, 3927]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205421,1010,"[nan, nan]","[20000, 4910]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[14000, 3956]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205427,1044,"[nan, nan]","[22000, 5399]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[15000, 3859]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205432,1079,"[nan, nan]","[24000, 5437]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[16000, 4020]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205438,1114,"[nan, nan]","[25000, 5929]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[17000, 3955]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205443,1148,"[nan, nan]","[29000, 6709]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[17000, 3912]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205449,1183,"[nan, nan]","[31000, 7316]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[18000, 3664]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205454,1217,"[nan, nan]","[32000, 7937]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[18000, 3761]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205500,,"[nan, nan]","[34000, 8460]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[19000, 4184]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205505,1287,"[nan, nan]","[35000, 9353]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[20000, 4300]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205511,1322,"[nan, nan]","[38000, 9417]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[21000, 3757]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205516,1356,"[nan, nan]","[41000, 8973]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[22000, 3263]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
+screenshot_20250917_205522,1390,"[nan, nan]","[44000, 4984]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[22000, 1545]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]","[nan, nan]"
