@@ -1,6 +1,7 @@
 # Data
 /data/
 *.png
+*h5
 # Mac OS-specific storage files
 .DS_Store
 
@@ -193,3 +194,6 @@ cython_debug/
 # nixos stuff für daniel
 .envrc
 shell.nix
+
+!/units/icons/*/*
+!/units/icons/*
