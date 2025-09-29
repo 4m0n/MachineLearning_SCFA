@@ -15,7 +15,7 @@ units = {
         'name': 'antiair-gunship',
         'icon': cv2.imread('units/icons/air/antiair-gunship.png', cv2.IMREAD_UNCHANGED),
         'min_count': 0,
-        'max_count': 20,
+        'max_count': 30,
         'fraction_base': 0.1,
         'fraction_clustered': 0.3,
         'time': 'mid',
@@ -48,7 +48,7 @@ units = {
         'name': 'gunship',
         'icon': cv2.imread('units/icons/air/gunship.png', cv2.IMREAD_UNCHANGED),
         'min_count': 0,
-        'max_count': 20,
+        'max_count': 40,
         'fraction_base': 0.1,
         'fraction_clustered': 0.3,
         'time': 'mid',
@@ -59,12 +59,12 @@ units = {
         'name': 'interceptor',
         'icon': cv2.imread('units/icons/air/interceptor.png', cv2.IMREAD_UNCHANGED),
         'min_count': 0,
-        'max_count': 30,
+        'max_count': 200,
         'fraction_base': 0.2,
-        'fraction_clustered': 0.3,
+        'fraction_clustered': 0.5,
         'time': 'early',
         'type' : 'air',
-        'relevance': 1.5
+        'relevance': 2.5
     },
     'torpedo-bomber': {
         'name': 'torpedo-bomber',
@@ -75,7 +75,7 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'late',
         'type' : 'air',
-        'relevance': 1.5
+        'relevance': 1.0
     },
     'transport': {
         'name': 'transport',
@@ -86,18 +86,18 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'const',
         'type': 'air',
-        'relevance': 1.0
+        'relevance': 0.5
     },
     'air-factory': {
         'name': 'air-factory',
         'icon': cv2.imread('units/icons/building/air-factory.png', cv2.IMREAD_UNCHANGED),
         'min_count': 1,
         'max_count': 3,
-        'fraction_base': 1.0,
-        'fraction_clustered': 0.0,
+        'fraction_base': 0.9,
+        'fraction_clustered': 0.1,
         'time': 'const',
         'type' : 'building',
-        'relevance': 2.0
+        'relevance': 1.5
     },
     'air-staging': {
         'name': 'air-staging',
@@ -105,7 +105,7 @@ units = {
         'min_count': 0,
         'max_count': 5,
         'fraction_base': 0.1,
-        'fraction_clustered': 0.0,
+        'fraction_clustered': 0.002,
         'time': 'const',
         'type': 'building',
         'relevance': 1.0
@@ -119,18 +119,18 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'early',
         'type': 'building',
-        'relevance': 1.5
+        'relevance': 1.0
     },
     'artillery': {
         'name': 'artillery',
         'icon': cv2.imread('units/icons/building/artillery.png', cv2.IMREAD_UNCHANGED),
         'min_count': 0,
         'max_count': 10,
-        'fraction_base': 0.1,
-        'fraction_clustered': 0.3,
+        'fraction_base': 0.2,
+        'fraction_clustered': 0.2,
         'time': 'mid',
         'type': 'building',
-        'relevance': 1.5
+        'relevance': 2
     },
     'energy': {
         'name': 'energy',
@@ -138,7 +138,7 @@ units = {
         'min_count': 1,
         'max_count': 50,
         'fraction_base': 0.2,
-        'fraction_clustered': 0.0,
+        'fraction_clustered': 0.01,
         'time': 'const',
         'type': 'building',
         'relevance': 2.0
@@ -147,12 +147,12 @@ units = {
         'name': 'land-factory',
         'icon': cv2.imread('units/icons/building/land-factory.png', cv2.IMREAD_UNCHANGED),
         'min_count': 1,
-        'max_count': 10,
-        'fraction_base': 1.0,
-        'fraction_clustered': 0.0,
+        'max_count': 20,
+        'fraction_base': 8.0,
+        'fraction_clustered': 0.2,
         'time': 'const',
         'type' : 'building',
-        'relevance': 2.0
+        'relevance': 1.5
     },
     'mass': {
         'name': 'mass',
@@ -163,7 +163,7 @@ units = {
         'fraction_clustered': 0.0,
         'time': 'const',
         'type' : 'building',
-        'relevance': 2.0
+        'relevance': 3.0
     },
     'missile-defense': {
         'name': 'missile-defense',
@@ -192,8 +192,8 @@ units = {
         'icon': cv2.imread('units/icons/building/naval-factory.png', cv2.IMREAD_UNCHANGED),
         'min_count': 1,
         'max_count': 5,
-        'fraction_base': 1.0,
-        'fraction_clustered': 0.0,
+        'fraction_base': 8.0,
+        'fraction_clustered': 0.2,
         'time': 'const',
         'type': 'building',
         'relevance': 2.0
@@ -207,7 +207,7 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'early',
         'type': 'building',
-        'relevance': 1.0
+        'relevance': 1.5
     },
     'radar-sonar': {
         'name': 'radar-sonar',
@@ -215,7 +215,7 @@ units = {
         'min_count': 0,
         'max_count': 5,
         'fraction_base': 0.1,
-        'fraction_clustered': 0.0,
+        'fraction_clustered': 0.02,
         'time': 'const',
         'type': 'building',
         'relevance': 1.0
@@ -236,8 +236,8 @@ units = {
         'icon': cv2.imread('units/icons/building/stealth-field-generator.png', cv2.IMREAD_UNCHANGED),
         'min_count': 0,
         'max_count': 5,
-        'fraction_base': 0.1,
-        'fraction_clustered': 0.0,
+        'fraction_base': 0.02,
+        'fraction_clustered': 0.1,
         'time': 'const',
         'type': 'building',
         'relevance': 1.0
@@ -262,7 +262,7 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'mid',
         'type': 'land',
-        'relevance': 1.5
+        'relevance': 2
     },
     'assault-bot': {
         'name': 'assault-bot',
@@ -280,11 +280,11 @@ units = {
         'icon': cv2.imread('units/icons/land/engineer.png', cv2.IMREAD_UNCHANGED),
         'min_count': 0,
         'max_count': 50,
-        'fraction_base': 0.2,
+        'fraction_base': 0.4,
         'fraction_clustered': 0.3,
         'time': 'const',
         'type' : 'land',
-        'relevance': 1.5
+        'relevance': 0.8
     },
     'missile-launcher-land': {
         'name': 'missile-launcher',
@@ -295,7 +295,7 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'mid',
         'type': 'land',
-        'relevance': 1.5
+        'relevance': 2
     },
     'mobile-antiair': {
         'name': 'mobile-antiair',
@@ -306,7 +306,7 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'early',
         'type': 'land',
-        'relevance': 1.5
+        'relevance': 1.0
     },
     'scout': {
         'name': 'scout',
@@ -317,7 +317,7 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'early',
         'type': 'land',
-        'relevance': 1.0
+        'relevance': 0.7
     },
     'shield-land': {
         'name': 'shield',
@@ -328,7 +328,7 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'mid',
         'type': 'land',
-        'relevance': 1.5
+        'relevance': 0.7
     },
     'tank': {
         'name': 'tank',
@@ -339,7 +339,7 @@ units = {
         'fraction_clustered': 0.5,
         'time': 'const',
         'type' : 'land',
-        'relevance': 1.5
+        'relevance': 1.0
     },
     'aircraft-carrier': {
         'name': 'aircraft-carrier',
@@ -361,7 +361,7 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'mid',
         'type': 'naval',
-        'relevance': 1.5
+        'relevance': 1.0
     },
     'battleship': {
         'name': 'battleship',
@@ -405,7 +405,7 @@ units = {
         'fraction_clustered': 0.3,
         'time': 'early',
         'type': 'naval',
-        'relevance': 1.5
+        'relevance': 1.0
     },
     'missile-ship': {
         'name': 'missile-ship',
@@ -433,7 +433,7 @@ units = {
         'name': 'shield-boat',
         'icon': cv2.imread('units/icons/naval/shield-boat.png', cv2.IMREAD_UNCHANGED),
         'min_count': 0,
-        'max_count': 10,
+        'max_count': 20,
         'fraction_base': 0.1,
         'fraction_clustered': 0.3,
         'time': 'mid',
