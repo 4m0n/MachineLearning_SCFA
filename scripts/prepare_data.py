@@ -482,7 +482,18 @@ def count_color_pixel(img,target_color, tolerance=50, count = False):
         (np.abs(img[:, :, 2] - target_b) < tolerance)    # Blau
     )
         
-
+    white_mask = np.all(img_org >= [255, 255, 255], axis=-1)    
+    
+    
+    result_mask = color_mask.copy()
+    diff = []
+    for shift in range(1, 7):  
+        shifted = np.roll(white_mask, -shift, axis=0)
+        valid = color_mask[:-shift, :] & shifted[:-shift, :]
+        shiftedback = np.roll(valid, shift, axis=0)
+        result_mask[:-shift, :] |= shiftedback 
+        diff.append(np.count_nonzero(result_mask) - np.count_nonzero(color_mask))
+    color_mask = result_mask
     pixel_count = np.count_nonzero(color_mask)
     if not count:
         result = np.zeros_like(img_org)
