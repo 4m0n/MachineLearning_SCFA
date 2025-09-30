@@ -4,10 +4,10 @@ import config
 from pathlib import Path
 import ast
 
-def LoadCNN():
+def LoadCNN(return_all = False):
     """
     INPUT:
-    None
+    return_all: BOOL, if False returns only paths, if True returns all information
     
     OUTPUT:
     - Dataframe with only paths 
@@ -87,7 +87,8 @@ def LoadCNN():
             
 
     all_information = all_information.dropna(subset=["power"])
-    all_information = all_information[["path"]]
+    if not return_all:
+        all_information = all_information[["path"]]
     return all_information
     
     
