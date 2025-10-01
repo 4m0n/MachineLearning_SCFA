@@ -123,20 +123,14 @@ while True:
     print(len(true_paths))
     
     for path in true_paths:
-        # dir_path = os.path.dirname(path)  # Get the directory part
-        # parent_dir = os.path.dirname(dir_path)  # Get the parent directory
-        # first_subdir = os.path.basename(parent_dir)  # Get the first subdirectory
-        # second_subdir = os.path.basename(dir_path)  # Get the second subdirectory
-        # filename = Path(path).stem  # Get the filename
-        # filepath = f"/home/daniel/SupremeCommander/MachineLearning_SCFA/data/KNN/{first_subdir}/{second_subdir}/{filename}.csv"
-        # filepar = os.path.dirname(filepath)
         filepath = Path(path.replace('processed', 'KNN').replace('.png', '.csv'))
         fileparent = os.path.dirname(filepath)
+        if not os.path.exists(fileparent):
+            os.makedirs(fileparent)  
         if not os.path.exists(filepath):
             image = cv2.imread(path)
             imagebw = rgb_to_binary(image)
             pred = model.predict(imagebw.reshape(1, 1080, 1920, 1))
             np.savetxt(filepath, np.stack([names, np.array(pred).squeeze()], axis=1), delimiter=',', fmt='%s')
-        if not os.path.exists(fileparent):
-            os.makedirs(fileparent)  
+
     
