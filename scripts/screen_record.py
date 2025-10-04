@@ -65,6 +65,7 @@ def save_screenshot(screenshot,intervall, output_dir, praefix,start_time,first):
     
 # wiederholt solang man will oder bis taste gedrückt wird
 def record(intervall,output_dir,praefix):
+    start_intervall = intervall
     global key_pressed
     if intervall <= 0:
         logger.error("Intervall must be greater than 0 and duration must be non-negative.")
@@ -77,7 +78,7 @@ def record(intervall,output_dir,praefix):
     while True:
         if record:
             screenshot = make_screenshot()
-            save_screenshot(screenshot,intervall, output_dir, praefix,start_time,first)
+            save_screenshot(screenshot,start_intervall, output_dir, praefix,start_time,first)
             first = False
             time.sleep(intervall)
         if key_pressed == "p":
@@ -111,7 +112,7 @@ def record(intervall,output_dir,praefix):
 
 @app.command()
 def screen_record_test(
-    intervall: int = typer.Option(1, help="Intervall zwischen Screenshots in Sekunden"),
+    intervall: int = typer.Option(2, help="Intervall zwischen Screenshots in Sekunden"),
     output_dir: Path = typer.Option(Path(f"{config.RAW_DATA_DIR}/screenshots/Session"), help="Ausgabeverzeichnis"),
     info: bool = typer.Option(False, help="Get informations about the directory and file count"),
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")

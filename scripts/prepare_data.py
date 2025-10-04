@@ -593,7 +593,7 @@ def list_outputs(input_dir,ouput_dir,recalculate):
 def prepare_data(
     input_dir: Path = typer.Option(Path(f"{config.RAW_DATA_DIR}/screenshots/"), help="Input directory"),
     ouput_dir: Path = typer.Option(Path(f"{config.PROCESSED_DATA_DIR}"), help="Ouput directory"),
-    recalculate: bool = typer.Option(True, help="Recalculate all files"),
+    recalculate: bool = typer.Option(False, help="Recalculate all files"),
     praefix: str = typer.Option("screenshot", help="Präfix für Dateinamen")
 ):
     inputs = list_outputs(input_dir,ouput_dir,recalculate)

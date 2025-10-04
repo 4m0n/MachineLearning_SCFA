@@ -91,10 +91,10 @@ def LoadCNN(return_all = False):
         all_information = all_information[["path"]]
     return all_information
     
+print(len(LoadCNN()))    
     
     
-    
-def loadKNN():
+def LoadKNN():
     """
     INPUT:
     
@@ -102,4 +102,32 @@ def loadKNN():
     OUTPUT:
     
     """
-    ...
+    df = pd.DataFrame()
+    pfad = config.KNN_DATA_DIR
+    main_path = Path(pfad)
+    columns = None
+    sessions = [folder for folder in main_path.iterdir() if folder.is_dir()]
+    for session in sessions:
+        colors = [color.name for color in session.iterdir() if color.is_dir()]
+        
+        for color in colors:
+            color_path = session / color
+            file = [str(file) for file in color_path.iterdir() if file.is_file()]
+            
+            for f in file:
+                temp = pd.read_csv(f, header=None)
+                temp = temp.T
+                temp.columns = temp.iloc[0]  # Setzt die erste Zeile als Spaltennamen
+                temp = temp.iloc[1:]         # Nimmt ab der zweiten Zeile die Daten
+                temp.reset_index(drop=True, inplace=True)
+                if columns is None:
+                    columns = temp.columns
+                    df = pd.DataFrame(columns=columns)
+                temp["color"] = color
+                temp["name"] = Path(f).name
+                temp["session"] = session.name
+                df = pd.concat([df, temp], ignore_index=True)
+                                
+                    
+                    
+    return df
